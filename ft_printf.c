@@ -2,7 +2,11 @@
 
 int ft_printf(const char *, ...)
 {
-    int total_len;
+    va_list vardata;
+    int     total_len;
+
+    
+
 
     total_len = 0;
 }
