@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:50 by pruangde          #+#    #+#             */
-/*   Updated: 2022/05/27 20:27:53 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:28:35 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,31 @@ void    *ft_calloc(size_t count, size_t size)
     return (ptr);
 }
 
-size_t  ft_strlen(const char *s)
+// copy from gnl  XD
+// mode 0 --> \0, mode 1 --> \n, mode 2 --> %
+size_t  sp_strlen(const char *s, int mode)
 {
     size_t  i;
 
     i = 0;
     if (!s)
         return (i);
-    while (s[i])
+    if (mode == 0)
+    {
+        while (s[i])
+            i++;
+    }
+    else if (mode == 1)
+    {
+        while (s[i] && s[i] != '\n')
+            i++;
         i++;
+    }
+    else if (mode == 2)
+    {
+        while (s[i] && s[i] != '%')
+            i++;
+    }
     return (i);
 }
 
