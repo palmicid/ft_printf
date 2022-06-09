@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:33 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/09 00:00:33 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/09 01:51:37 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ typedef struct s_data
     char                *fmt;                   // format
     int                 tlen;                   // total len
     va_list             vl;                     // va list
-    t_str               *lststr;                // list str
-    t_str               *last_posstr;           // last str position
-    int                 pflag;                  // pos start flag
-    int                 lpos                    // last pos
+    int                 pos;                    // position in fmt
 }                       t_data;
 
 

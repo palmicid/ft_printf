@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/08 17:18:44 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/09 01:51:38 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    find_spec_createlist(t_data *td, int i)
 {
     i++;
     if (td->fmt[i] == 'c')
-        lst_char(td, i);
+        
     else if (td->fmt[i] == 's')
         // lst_str();
     else if (td->fmt[i] == 'p')
