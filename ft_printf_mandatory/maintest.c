@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include "ft_printf.h"
 
 int ft_strlen(char *str)
 {
@@ -11,20 +12,18 @@ int ft_strlen(char *str)
     return (i);
 }
 
-int main(int ac, char **av)
+int main(void)
 {
-    int ori;
-    int alt;
-    
+    int     ori;
+    int     alt;
+    char    c[] = "qwertyui";
+
+  
 // test declare
 
-
-    if (ac == 2)
-    {
-        ori = printf("%s\n", av[1]);
-        printf("ori = %d\n", ori);
-        alt = ft_printf("%s\n", av[1]);
-        printf("alt = %d\n", alt);
-    }
+    ori = printf("%s\n", c);
+    printf("ori = %d\n", ori);
+    alt = ft_printf("%s\n", c);
+    printf("alt = %d\n", alt);
     return (0);
 }

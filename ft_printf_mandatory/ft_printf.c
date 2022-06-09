@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/09 01:51:38 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:05:34 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,40 +19,30 @@ void process(t_data *td)
 
     i = 0;
     ch = 0;
-    while (td->fmt[i])  // loop until \0
+    while (td->fmt[td->i])  // loop until \0
     {
-        if (td->fmt[i] == '%')
-        {
-            if (ch > 0)
-            {
-                create_lst(); // pass ch 
-                ch = 0;    
-            }
-            find_spec_createlist(td, i);     // create list inside and add back from flag
-            i += td->pflag;
-        }
+        if (td->fmt[td->i] == '%')
+            find_spec_createlist(td);     // create list inside and add back from flag
         else
-        {
-            ch++;
-            i++;
-        }
+        td->tlen += write(1, &td->fmt[td->i], 1);
+        td->i++;
     }
-    if (ch > 0)
-        create_lst();
 }
 // last pos = present - ch  --> create list 
 
-void    find_spec_createlist(t_data *td, int i)
+void    find_spec_createlist(t_data *td)
 {
-    i++;
-    if (td->fmt[i] == 'c')
-        
-    else if (td->fmt[i] == 's')
-        // lst_str();
-    else if (td->fmt[i] == 'p')
+    td->i++;
+    if (td->fmt[td->i] == 'c')
+        pf_char(td);
+    else if (td->fmt[td->i] == 's')
+        pf_str(td);
+
+//    else if (td->fmt[i] == 'p')
         // lst_pointer();
-    else if (td->fmt[i] == 'd' || td->fmt[i] == 'i')
-        // lst_
+    else if (td->fmt[td->i] == 'd' || td->fmt[td->i] == 'i')
+        pf_number(td);
+    /*
     else if (td->fmt[i] == 'u')
         // lst_undeci();
     else if (td->fmt[i] == 'x')
@@ -60,18 +50,16 @@ void    find_spec_createlist(t_data *td, int i)
     else if (td->fmt[i] == 'X')
         // lst_unhexup();
     else if (td->fmt[i] == '%')
-        // lst_percent();
+        // lst_percent();       */
     else
-        // find more flag
-        // create empty list store -1 
+        td->tlen = -1;
 }
 
-t_data  *init_data(t_data *td, char *fmt)
+t_data  *init_data(t_data *td, const char *fmt)
 { 
     td->fmt = fmt;
     td->tlen = 0;
-    td->lststr = NULL;
-    td->last_posstr = td->lststr;
+    td->i = 0;
     return (td);
 }
 
@@ -87,8 +75,7 @@ int ft_printf(const char *fmt, ...)
     td = init_data(td, fmt);
     process(td);
     va_end(td->vl);
-    // print in list and del list (del only t_str)
-    total_len = print_count(td);
-    // free(td);
+    total_len = td->tlen;
+    free(td);
     return (total_len);
 }

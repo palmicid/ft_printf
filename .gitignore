@@ -1,4 +1,6 @@
 /printfTester
+/ft_printf_mandatory/printfTester
+/ft_printf_bonus/printfTester
 
 # Prerequisites
 *.d

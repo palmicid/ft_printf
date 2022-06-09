@@ -1,24 +1,29 @@
 #include "ft_printf.h"
 
-void    create_lststr(t_data *td)
+void    pf_char(t_data *td)
 {
-    t_str   *tmp;
+    char    c;
 
-    if (!td->lststr)
-        td->lststr = (t_str *)malloc(sizeof(t_str));
-    else
+    c = va_arg(td->vl, int);
+    td->tlen += write(1, &c, 1);
+}
+
+void    pf_str(t_data *td)
+{
+    char    *str;
+
+    str = va_arg(td->vl, char*);
+    while (*str)
     {
-        tmp = td->lststr;
-        while (tmp->next)
-            tmp = tmp->next;
-        tmp->next = (t_data *)malloc(sizeof(t_str));
+        td->tlen += write(1, str, 1);
+        str++;
     }
 }
 
-//create more in struct for save last pos of strlist 
-
-void    lst_char(t_data *td, int i)
+void    pf_number(t_data *td)
 {
-    create_lststr(td);
-}
+    int nb;
 
+    nb = va_arg(td->vl, int);
+    sp_putnumber(td, nb);
+}

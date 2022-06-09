@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:50 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/01 21:28:35 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:05:26 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    *ft_calloc(size_t count, size_t size)
     void *ptr;
 
     if (size > sizeof(size_t))
-        retune (NULL);
+        return (NULL);
     if (count == 0 || size == 0)
     {
         count = 1;
@@ -70,4 +70,20 @@ size_t  sp_strlen(const char *s, int mode)
     return (i);
 }
 
+void    sp_putnumber(t_data *td, int nb)
+{
+    char            c;
+    unsigned int    un;
 
+    if (nb < 0)
+    {
+        td->tlen += write(1, "-", 1);
+        un = nb * -1;
+    }
+    else
+        un = nb;
+    if (un >= 10)
+        sp_putnumber(td, un / 10);
+    c = (char)(un % 10) + 48;
+    td->tlen += write(1, &c, 1);
+}
