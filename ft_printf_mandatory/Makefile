@@ -6,7 +6,7 @@
 #    By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 20:28:10 by pruangde          #+#    #+#              #
-#    Updated: 2022/06/09 15:40:19 by pruangde         ###   ########.fr        #
+#    Updated: 2022/06/10 02:54:43 by pruangde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 NAME = libftprintf.a
 
-#UTILS = utils_1.c
-#LIBFT = libft_1.c
+PFC = ft_printf.c
+UTILS = utils_1.c utils_2.c
+LIBFT = libft_1.c libft_2.c
 
-SRCS = ft_printf.c utils_1.c libft_1.c #$(UTILS) $(LIBFT)
+SRCS = $(PFC) $(UTILS) $(LIBFT)
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: all clean fclean re
@@ -40,10 +41,10 @@ fclean: clean
 re: fclean all
 
 norm:
-    @echo "------------------------------------"
-    @echo " !!!!!!!!   NORMINETTE   !!!!!!!!"
-    @echo ""
-    @norminette -R CheckForbiddenSourceHeader ft_*.c
-    @norminette -R CheckDefine *.h
-    @echo ""
-    @echo "------------------------------------"
+	@echo "------------------------------------"
+	@echo " !!!!!!!!   NORMINETTE   !!!!!!!!"
+	@echo ""
+	@norminette -R CheckForbiddenSourceHeader *.c
+	@norminette -R CheckDefine *.h
+	@echo ""
+	@echo "------------------------------------"

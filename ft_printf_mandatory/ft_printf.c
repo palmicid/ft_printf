@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/09 22:05:34 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/10 03:19:28 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,18 @@ void    find_spec_createlist(t_data *td)
         pf_char(td);
     else if (td->fmt[td->i] == 's')
         pf_str(td);
-
-//    else if (td->fmt[i] == 'p')
-        // lst_pointer();
+    else if (td->fmt[td->i] == 'p')
+        pf_ptr(td);
     else if (td->fmt[td->i] == 'd' || td->fmt[td->i] == 'i')
         pf_number(td);
-    /*
-    else if (td->fmt[i] == 'u')
-        // lst_undeci();
-    else if (td->fmt[i] == 'x')
-        // lst_unhexlow();
-    else if (td->fmt[i] == 'X')
-        // lst_unhexup();
-    else if (td->fmt[i] == '%')
-        // lst_percent();       */
+    else if (td->fmt[td->i] == 'u')
+        pf_unsigned(td);
+    else if (td->fmt[td->i] == 'x')
+        pf_hexlow(td);
+    else if (td->fmt[td->i] == 'X')
+        pf_hexupper(td);
+    else if (td->fmt[td->i] == '%')
+        td->tlen += write(1, "%", 1);
     else
         td->tlen = -1;
 }

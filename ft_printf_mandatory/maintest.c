@@ -16,14 +16,14 @@ int main(void)
 {
     int     ori;
     int     alt;
-    char    c[] = "qwertyui";
-
+    //char    c[] = "qwertyui";
+    int     x = 1234567890;
   
 // test declare
 
-    ori = printf("%s\n", c);
+    ori = printf("%d\n", x);
     printf("ori = %d\n", ori);
-    alt = ft_printf("%s\n", c);
+    alt = ft_printf("%d\n", x);
     printf("alt = %d\n", alt);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:50 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/09 22:05:26 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/10 02:44:08 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    ft_bzero(void *s, size_t n)
 {
-    int i;
+    size_t i;
 
     i = 0;
     while (i < n)
@@ -84,6 +84,16 @@ void    sp_putnumber(t_data *td, int nb)
         un = nb;
     if (un >= 10)
         sp_putnumber(td, un / 10);
-    c = (char)(un % 10) + 48;
+    c = (char)(un % 10) + '0';
+    td->tlen += write(1, &c, 1);
+}
+
+void    putnum_unsig(t_data *td, unsigned int n)
+{
+    char    c;
+
+    if (n >= 10)
+        putnum_unsig(td, n / 10);
+    c = (char)(n % 10) + '0';
     td->tlen += write(1, &c, 1);
 }
