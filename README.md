@@ -1,6 +1,8 @@
 # ft_printf
 My 42 ft_printf
 
+speedrun mandatory just for exam XD
+I'll be back for bonus later.
 
 Tester
 - My tester (Not included 😏)
