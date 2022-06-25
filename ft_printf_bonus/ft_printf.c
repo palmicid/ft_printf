@@ -3,92 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/08 17:18:44 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/10 04:11:40 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void process(t_data *td)
+void	process(t_data *td)
 {
-    int         i;
-    int         ch;     // char count
+	int	i;
+	int	ch;
 
-    i = 0;
-    ch = 0;
-    while (td->fmt[i])  // loop until \0
-    {
-        if (td->fmt[i] == '%')
-        {
-            if (ch > 0)
-            {
-                create_lst(); // pass ch 
-                ch = 0;    
-            }
-            find_spec_createlist(td, i);     // create list inside and add back from flag
-            i += td->pflag;
-        }
-        else
-        {
-            ch++;
-            i++;
-        }
-    }
-    if (ch > 0)
-        create_lst();
-}
-// last pos = present - ch  --> create list 
-
-void    find_spec_createlist(t_data *td, int i)
-{
-    i++;
-    if (td->fmt[i] == 'c')
-        lst_char(td, i);
-    else if (td->fmt[i] == 's')
-        // lst_str();
-    else if (td->fmt[i] == 'p')
-        // lst_pointer();
-    else if (td->fmt[i] == 'd' || td->fmt[i] == 'i')
-        // lst_
-    else if (td->fmt[i] == 'u')
-        // lst_undeci();
-    else if (td->fmt[i] == 'x')
-        // lst_unhexlow();
-    else if (td->fmt[i] == 'X')
-        // lst_unhexup();
-    else if (td->fmt[i] == '%')
-        // lst_percent();
-    else
-        // find more flag
-        // create empty list store -1 
+	i = 0;
+	ch = 0;
+	while (td->fmt[td->i])
+	{
+		if (td->fmt[td->i] == '%')
+			find_spec_createlist(td);
+		else
+			td->tlen += write(1, &td->fmt[td->i], 1);
+		td->i++;
+	}
 }
 
-t_data  *init_data(t_data *td, char *fmt)
-{ 
-    td->fmt = fmt;
-    td->tlen = 0;
-    td->lststr = NULL;
-    td->last_posstr = td->lststr;
-    return (td);
+void	find_spec_createlist(t_data *td)
+{
+	td->i++;
+	if (td->fmt[td->i] == 'c')
+		pf_char(td);
+	else if (td->fmt[td->i] == 's')
+		pf_str(td);
+	else if (td->fmt[td->i] == 'p')
+		pf_ptr(td);
+	else if (td->fmt[td->i] == 'd' || td->fmt[td->i] == 'i')
+		pf_number(td);
+	else if (td->fmt[td->i] == 'u')
+		pf_unsigned(td);
+	else if (td->fmt[td->i] == 'x')
+		pf_hexlow(td);
+	else if (td->fmt[td->i] == 'X')
+		pf_hexupper(td);
+	else if (td->fmt[td->i] == '%')
+		td->tlen += write(1, "%", 1);
+	else
+		td->tlen = -1;
 }
 
-int ft_printf(const char *fmt, ...)
+t_data	*init_data(t_data *td, const char *fmt)
 {
-    int         total_len;
-    t_data      *td;
+	td->fmt = fmt;
+	td->tlen = 0;
+	td->i = 0;
+	return (td);
+}
 
-    td = (t_data *)malloc(sizeof(t_data));
-    if (!td)
-        return (-1);
-    va_start(td->vl, fmt);
-    td = init_data(td, fmt);
-    process(td);
-    va_end(td->vl);
-    // print in list and del list (del only t_str)
-    total_len = print_count(td);
-    // free(td);
-    return (total_len);
+int	ft_printf(const char *fmt, ...)
+{
+	int		total_len;
+	t_data	*td;
+
+	td = (t_data *)malloc(sizeof(t_data));
+	if (!td)
+		return (-1);
+	va_start(td->vl, fmt);
+	td = init_data(td, fmt);
+	process(td);
+	va_end(td->vl);
+	total_len = td->tlen;
+	free(td);
+	return (total_len);
 }

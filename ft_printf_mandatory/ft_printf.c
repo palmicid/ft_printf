@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/10 04:11:40 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/26 01:33:49 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	process(t_data *td)
 	}
 }
 
-void	find_spec_createlist(t_data *td)
+void	find_spec_1(t_data *td)
 {
 	td->i++;
 	if (td->fmt[td->i] == 'c')

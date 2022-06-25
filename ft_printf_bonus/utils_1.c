@@ -1,24 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 04:00:53 by pruangde          #+#    #+#             */
+/*   Updated: 2022/06/10 04:03:20 by pruangde         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void    create_lststr(t_data *td)
+void	pf_char(t_data *td)
 {
-    t_str   *tmp;
+	char	c;
 
-    if (!td->lststr)
-        td->lststr = (t_str *)malloc(sizeof(t_str));
-    else
-    {
-        tmp = td->lststr;
-        while (tmp->next)
-            tmp = tmp->next;
-        tmp->next = (t_data *)malloc(sizeof(t_str));
-    }
+	c = va_arg(td->vl, int);
+	td->tlen += write(1, &c, 1);
 }
 
-//create more in struct for save last pos of strlist 
-
-void    lst_char(t_data *td, int i)
+void	pf_str(t_data *td)
 {
-    create_lststr(td);
+	char	*str;
+
+	str = va_arg(td->vl, char *);
+	if (!str)
+		td->tlen += write(1, "(null)", 6);
+	else
+	{
+		while (*str)
+		{
+			td->tlen += write(1, str, 1);
+			str++;
+		}
+	}
 }
 
+void	pf_number(t_data *td)
+{
+	int	nb;
+
+	nb = va_arg(td->vl, int);
+	sp_putnumber(td, nb);
+}
+
+void	pf_unsigned(t_data *td)
+{
+	unsigned int	n;
+
+	n = va_arg(td->vl, unsigned int);
+	putnum_unsig(td, n);
+}
+
+void	pf_hexlow(t_data *td)
+{
+	unsigned int	n;
+	char			*base;
+
+	n = va_arg(td->vl, unsigned int);
+	base = "0123456789abcdef";
+	puthexnum(td, n, base);
+}

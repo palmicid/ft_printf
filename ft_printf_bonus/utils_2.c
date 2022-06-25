@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_1.c                                          :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 20:27:50 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/10 04:06:29 by pruangde         ###   ########.fr       */
+/*   Created: 2022/06/10 03:55:27 by pruangde          #+#    #+#             */
+/*   Updated: 2022/06/10 03:58:39 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	sp_putnumber(t_data *td, int nb)
+void	pf_hexupper(t_data *td)
 {
-	char			c;
-	unsigned int	un;
+	unsigned int	n;
+	char			*base;
 
-	if (nb < 0)
-	{
-		td->tlen += write(1, "-", 1);
-		un = nb * -1;
-	}
-	else
-		un = nb;
-	if (un >= 10)
-		sp_putnumber(td, un / 10);
-	c = (char)(un % 10) + '0';
-	td->tlen += write(1, &c, 1);
+	n = va_arg(td->vl, unsigned int);
+	base = "0123456789ABCDEF";
+	puthexnum(td, n, base);
 }
 
-void	putnum_unsig(t_data *td, unsigned int n)
+void	pf_ptr(t_data *td)
 {
-	char	c;
+	size_t	n;
+	char	*base;
 
-	if (n >= 10)
-		putnum_unsig(td, n / 10);
-	c = (char)(n % 10) + '0';
-	td->tlen += write(1, &c, 1);
+	n = va_arg(td->vl, size_t);
+	base = "0123456789abcdef";
+	td->tlen += write(1, "0x", 2);
+	puthexnum_sizt(td, n, base);
 }
