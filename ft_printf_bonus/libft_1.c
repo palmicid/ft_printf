@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:50 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/27 00:23:22 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:07:14 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ void	puthexnum_sizt(t_data *td, size_t n, char *base)
 		puthexnum_sizt(td, n / 16, base);
 	c = (char)base[n % 16];
 	td->tlen += write(1, &c, 1);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

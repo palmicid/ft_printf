@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/27 02:09:43 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:54:52 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	find_spec_createlist(t_data *td)
 	else if (td->fmt[td->i] == '-' || td->fmt[td->i] == '0' \
 				|| td->fmt[td->i] == '#' || td->fmt[td->i] == ' ' \
 				|| td->fmt[td->i] == '+')
-		find_flag(td);
+		pf_writeflag(td);
 	else
 		td->tlen = -1;
 }
@@ -62,6 +62,19 @@ t_data	*init_data(t_data *td, const char *fmt)
 	td->tlen = 0;
 	td->i = 0;
 	return (td);
+}
+
+t_flag	*init_flag(t_flag *tf)
+{
+	tf->s2w = NULL;
+	tf->minus = -1;
+	tf->zero = -1;
+	tf->dot = -1;
+	tf->sharp = -1;
+	tf->space = -1;
+	tf->plus = -1;
+	tf->wid = -1;
+	return (tf);
 }
 
 int	ft_printf(const char *fmt, ...)
