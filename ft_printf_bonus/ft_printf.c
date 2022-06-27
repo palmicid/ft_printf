@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:17 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/10 04:11:40 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:09:43 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	find_spec_createlist(t_data *td)
 		pf_hexupper(td);
 	else if (td->fmt[td->i] == '%')
 		td->tlen += write(1, "%", 1);
+	else if (td->fmt[td->i] == '-' || td->fmt[td->i] == '0' \
+				|| td->fmt[td->i] == '#' || td->fmt[td->i] == ' ' \
+				|| td->fmt[td->i] == '+')
+		find_flag(td);
 	else
 		td->tlen = -1;
 }

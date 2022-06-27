@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pruangde <pruangde@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:33 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/10 04:14:43 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:22:54 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,39 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+typedef struct s_flag
+{
+	char	*s2w;
+	int		minus;
+	int		zero;
+	int		prec;
+	int		sharp;
+	int		space;
+	int		plus;
+
+}		t_flag;
+
 typedef struct s_data
 {
 	const char	*fmt;
 	int			tlen;
 	va_list		vl;
 	int			i;
+	int			flag;
+	t_flag		data_flag;
 }				t_data;
 
 // printf
 // ft_printf
+// 1
 int		ft_printf(const char *fmt, ...);
 void	process(t_data *td);
 void	find_spec_createlist(t_data *td);
 t_data	*init_data(t_data *td, const char *fmt);
+t_flag	*init_flag(t_data *tf);
+
+// 2
+void	find_flag(t_data *td);
 
 // utils
 // 1
@@ -48,9 +67,12 @@ void	pf_ptr(t_data *td);
 // 1
 void	sp_putnumber(t_data *td, int nb);
 void	putnum_unsig(t_data *td, unsigned int n);
-
-// 2
 void	puthexnum(t_data *td, unsigned int n, char *base);
 void	puthexnum_sizt(t_data *td, size_t n, char *base);
 
+// flag utils
+// 1
+
 #endif
+
+// next draft fx that will use in flag handle

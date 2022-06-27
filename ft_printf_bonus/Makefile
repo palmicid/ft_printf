@@ -6,7 +6,7 @@
 #    By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 20:28:10 by pruangde          #+#    #+#              #
-#    Updated: 2022/06/10 02:54:43 by pruangde         ###   ########.fr        #
+#    Updated: 2022/06/27 00:24:19 by pruangde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,14 @@ NAME = libftprintf.a
 
 PFC = ft_printf.c
 UTILS = utils_1.c utils_2.c
-LIBFT = libft_1.c libft_2.c
+LIBFT = libft_1.c
 
 SRCS = $(PFC) $(UTILS) $(LIBFT)
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: all clean fclean re
+
+bonus: all
 
 all: $(NAME)
 

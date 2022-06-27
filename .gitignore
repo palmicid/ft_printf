@@ -2,6 +2,8 @@
 /ft_printf_mandatory/printfTester
 /ft_printf_mandatory/ft_printf_tester
 /ft_printf_bonus/printfTester
+/ft_printf_bonus/42TESTERS-PRINTF
+/ft_printf_bonus/ft_printf_tester
 
 # Prerequisites
 *.d
