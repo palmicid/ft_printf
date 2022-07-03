@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:33 by pruangde          #+#    #+#             */
-/*   Updated: 2022/06/27 22:47:32 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/07/04 01:54:24 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int		ft_isdigit(int c);
 
 // flag utils
 // 1
+void	pf_spacedigit(t_data *td, t_flag *tf);
+void	pf_zerospace()
 
 #endif
 
