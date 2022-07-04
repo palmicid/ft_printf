@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:33 by pruangde          #+#    #+#             */
-/*   Updated: 2022/07/04 01:54:24 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:25:35 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ t_data	*init_data(t_data *td, const char *fmt);
 t_flag	*init_flag(t_flag *tf);
 
 // 2
-void	find_flag(t_data *td);
+void	st_flag(t_data *td);
+void	find_flag(t_data *td, t_flag *tf);
 
 // utils
 // 1
