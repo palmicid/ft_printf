@@ -48,7 +48,7 @@ t_flag	*init_flag(t_flag *tf);
 
 // 2
 void	st_flag(t_data *td);
-void	find_flag(t_data *td, t_flag *tf);
+//void	find_flag(t_data *td, t_flag *tf);
 
 // utils
 // 1
@@ -61,6 +61,7 @@ void	pf_hexlow(t_data *td);
 // 2
 void	pf_hexupper(t_data *td);
 void	pf_ptr(t_data *td);
+void	pf_wrongflag(t_data *td);
 
 // libft
 // 1
@@ -72,8 +73,8 @@ int		ft_isdigit(int c);
 
 // flag utils
 // 1
-void	pf_spacedigit(t_data *td, t_flag *tf);
-void	pf_zerospace()
+//void	pf_spacedigit(t_data *td, t_flag *tf);
+//void	pf_zerospace();
 
 #endif
 

@@ -6,7 +6,7 @@
 #    By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 20:28:10 by pruangde          #+#    #+#              #
-#    Updated: 2022/06/27 00:24:19 by pruangde         ###   ########.fr        #
+#    Updated: 2022/07/14 02:51:12 by pruangde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,3 +50,6 @@ norm:
 	@norminette -R CheckDefine *.h
 	@echo ""
 	@echo "------------------------------------"
+
+test:
+	$(CC) *.c

@@ -54,7 +54,7 @@ void	find_spec_createlist(t_data *td)
 				|| td->fmt[td->i] == '+' || ft_isdigit(td->fmt[td->i]))
 		st_flag(td);
 	else
-		td->tlen = -1;
+		pf_wrongflag(td);
 }
 
 t_data	*init_data(t_data *td, const char *fmt)

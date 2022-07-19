@@ -9,7 +9,7 @@ void	st_flag(t_data *td)
 		td->tlen = -1;
 	tf = init_flag(tf);
 	find_flag(td, tf);
-	// free flag
+	//free flag
 }
 
 void	find_flag(t_data *td, t_flag *tf)

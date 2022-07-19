@@ -32,3 +32,9 @@ void	pf_ptr(t_data *td)
 	td->tlen += write(1, "0x", 2);
 	puthexnum_sizt(td, n, base);
 }
+
+void	pf_wrongflag(t_data *td)
+{
+	td->i--;
+	td->tlen += write(1, &td->fmt[td->i], 1);
+}
