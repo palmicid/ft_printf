@@ -6,7 +6,7 @@
 /*   By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 20:27:33 by pruangde          #+#    #+#             */
-/*   Updated: 2022/07/04 21:25:35 by pruangde         ###   ########.fr       */
+/*   Updated: 2022/07/23 23:25:00 by pruangde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ t_flag	*init_flag(t_flag *tf);
 
 // 2
 void	st_flag(t_data *td);
-//void	find_flag(t_data *td, t_flag *tf);
+void	find_flag(t_data *td, t_flag *tf);
+void	findspec(t_data *td, t_flag *tf);
+void	pf_withflag(t_data *td, t_flag *tf);
 
 // utils
 // 1
@@ -63,6 +65,22 @@ void	pf_hexupper(t_data *td);
 void	pf_ptr(t_data *td);
 void	pf_wrongflag(t_data *td);
 
+// 3	utils with flag
+void	pf_zerodigit(t_data *td, t_flag *tf);
+//void	pf_space32(t_data *td, t_flag *tf);
+
+//convert
+// 1
+void	conv_char(t_data *td, t_flag *tf);
+void	conv_str(t_data *td, t_flag *tf);
+//void	conv_ptr(t_data *td, t_flag *tf);
+//void	conv_number(t_data *td, t_flag *tf);
+//void	conv_unsigned(t_data *td, t_flag *tf);
+
+// 2
+//void	conv_hexlow(t_data *td, t_flag *tf);
+//void	conv_hexupper(t_data *td, t_flag *tf);
+
 // libft
 // 1
 void	sp_putnumber(t_data *td, int nb);
@@ -71,11 +89,11 @@ void	puthexnum(t_data *td, unsigned int n, char *base);
 void	puthexnum_sizt(t_data *td, size_t n, char *base);
 int		ft_isdigit(int c);
 
-// flag utils
-// 1
-//void	pf_spacedigit(t_data *td, t_flag *tf);
-//void	pf_zerospace();
+// 2
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
 
 #endif
-
-// next draft fx that will use in flag handle
