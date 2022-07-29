@@ -6,7 +6,7 @@
 #    By: pruangde <pruangde@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 20:28:10 by pruangde          #+#    #+#              #
-#    Updated: 2022/07/21 20:47:00 by pruangde         ###   ########.fr        #
+#    Updated: 2022/07/26 16:08:21 by pruangde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,16 @@ OBJS = $(SRCS:.c=.o)
 
 bonus: all
 
+LIBFT_PTH = ./libft
+LIBFT = $(LIBFT_PTH)/libft.a
+
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
 	ar -rcs $@ $^
+
+$(LIBFT):
+	make -C $(LIBFT_PTH) all
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
